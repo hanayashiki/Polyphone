@@ -1,0 +1,43 @@
+case: 你这个爱好很好啊
+test_xpinyin
+False	actual(ni3 zhe4 ge4 ai4 hao3 hen3 hao3 a5) vs expected(ni3 zhe4 ge4 ai4 hao4 hen3 hao3 a5):			
+	edit distance: 1
+test_pypinyin
+True	actual(ni3 zhe4 ge4 ai4 hao4 hen3 hao3 a5) vs expected(ni3 zhe4 ge4 ai4 hao4 hen3 hao3 a5):			
+	edit distance: 0
+
+
+case: 吃着火锅唱着歌
+test_xpinyin
+False	actual(chi1 zhao2 huo3 guo1 chang4 zhao2 ge1) vs expected(chi1 zhe5 huo3 guo1 chang4 zhe5 ge1):			
+	edit distance: 6
+test_pypinyin
+True	actual(chi1 zhe5 huo3 guo1 chang4 zhe5 ge1) vs expected(chi1 zhe5 huo3 guo1 chang4 zhe5 ge1):			
+	edit distance: 0
+
+
+case: 率领解决圆周率
+test_xpinyin
+False	actual(lv4 ling3 jie3 jue2 yuan2 zhou1 lv4) vs expected(shuai4 ling3 jie3 jue2 yuan2 zhou1 lv4):			
+	edit distance: 5
+test_pypinyin
+True	actual(shuai4 ling3 jie3 jue2 yuan2 zhou1 lv4) vs expected(shuai4 ling3 jie3 jue2 yuan2 zhou1 lv4):			
+	edit distance: 0
+
+
+case: 他每次出差差不多都要出点差错
+test_xpinyin
+False	actual(ta1 mei3 ci4 chu1 cha4 cha4 bu4 duo1 du1 yao4 chu1 dian3 cha4 cuo4) vs expected(ta1 mei3 ci4 chu1 chai1 cha4 bu4 duo1 dou1 yao4 chu1 dian3 cha1 cuo4):			
+	edit distance: 4
+test_pypinyin
+True	actual(ta1 mei3 ci4 chu1 chai1 cha4 bu4 duo1 dou1 yao4 chu1 dian3 cha1 cuo4) vs expected(ta1 mei3 ci4 chu1 chai1 cha4 bu4 duo1 dou1 yao4 chu1 dian3 cha1 cuo4):			
+	edit distance: 0
+
+
+case: 你这着真绝，让他干着急，又无法着手应付，心里老是悬着。
+test_xpinyin
+False	actual(ni3 zhe4 zhao2 zhen1 jue2 ,5 rang4 ta1 gan1 zhao2 ji2 ,5 you4 wu2 fa3 zhao2 shou3 ying4 fu4 ,5 xin1 li3 lao3 shi4 xuan2 zhao2 .5) vs expected(ni3 zhe4 zhao1 zhen1 jue2 ,5 rang4 ta1 gan1 zhao2 ji2 ,5 you4 wu2 fa3 zhuo2 shou3 ying4 fu1 ,5 xin1 li3 lao3 shi1 xuan2 zhe5 .5):			
+	edit distance: 7
+test_pypinyin
+False	actual(ni3 zhe4 zhe5 zhen1 jue2 ,5 rang4 ta1 gan1 zhao2 ji2 ,5 you4 wu2 fa3 zhuo2 shou3 ying4 fu4 ,5 xin1 li3 lao3 shi4 xuan2 zhe5 .5) vs expected(ni3 zhe4 zhao1 zhen1 jue2 ,5 rang4 ta1 gan1 zhao2 ji2 ,5 you4 wu2 fa3 zhuo2 shou3 ying4 fu1 ,5 xin1 li3 lao3 shi1 xuan2 zhe5 .5):			
+	edit distance: 5
