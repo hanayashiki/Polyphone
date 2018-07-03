@@ -22,4 +22,8 @@ if __name__ == '__main__':
     df = get_char_word_vec()
     print(get_sim("吃", "喝"))
     print(get_sim("（", "）"))
+    print(get_sim("“", "”"))
+    print(get_sim("。", "。"))
+    print(get_sim("；", "；"))
+    print(get_sim("a", "a"))
 
