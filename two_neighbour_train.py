@@ -10,17 +10,18 @@ from keras.callbacks import ModelCheckpoint
 from keras.callbacks import Callback
 
 class TwoNeighbourTrain:
-    def __init__(self, train_name, char: str, pinyins: list):
+    def __init__(self, train_name, char: str, pinyins: list, n=1, use_focus=False):
         self.train_name = train_name
         self.model_weight = 'traning_checkpoints/' + self.train_name + '.h5'
         self.char = char
         self.pinyins = pinyins
         self.cate_count = len(pinyins)
-        self.two_neighbour = two_neighbour_model.TwoNeighbour(char, pinyins)
+        self.n = n
+        self.two_neighbour = two_neighbour_model.TwoNeighbour(char, pinyins, n=n, use_focus=use_focus)
 
     def load_data(self, dictionary, train_split=0.7):
         self.word_vec = word_vec.get_char_word_vec()
-        self.data = two_neighbour_data.get_training_data(dictionary, self.char, self.pinyins, self.word_vec)
+        self.data = two_neighbour_data.get_training_data(dictionary, self.char, self.pinyins, self.word_vec, self.n)
         # split the data into train and test, each class at the same ratio
         train_x_set = []
         train_y_set = []
@@ -93,7 +94,7 @@ class TwoNeighbourTrain:
         training_info_call_back.on_epoch_end = on_epoch_end
 
         model.fit(self.train_x, self.train_y,
-                  batch_size=2, epochs=1000,
+                  batch_size=2, epochs=100,
                   validation_data=(self.test_x, self.test_y),
                   initial_epoch=epoch_count, callbacks=[ModelCheckpoint(self.model_weight), training_info_call_back])
 
@@ -108,7 +109,8 @@ class TwoNeighbourTrain:
         return model
 
     def predict_sentence(self, sentence):
-        vec = two_neighbour_data.sentence_to_two_neighbors(self.char, sentence, self.word_vec)
+        _sentence = two_neighbour_data.sentence_cleaner(sentence)
+        vec = two_neighbour_data.sentence_to_n_neighbors(self.n, self.char, _sentence, self.word_vec)
         predict = self.weighted_model.predict(np.expand_dims(vec, axis=0))[0, :]
         return (sentence, predict.tolist(), self.pinyins[int(np.argmax(predict))])
 
@@ -116,19 +118,32 @@ class TwoNeighbourTrain:
 
 
 if __name__ == '__main__':
-    from resource.training_长 import data
+    from resource.training_为 import data
 
-    tn_train = TwoNeighbourTrain('train_long', '长', ['chang2', 'zhang3'])
-    tn_train.load_data(data)
-    #tn_train.train()
+    for use_focus in [False, True]:
+        for i in range(1, 7):
+            tn_train = TwoNeighbourTrain('train_for_wei_%d_neighbour-use_focus=%s' %  (2*i, str(use_focus)), '为', ['wei2', 'wei4'], i, use_focus=use_focus)
+            tn_train.load_data(data)
+            tn_train.train()
 
-    tn_train.prepare_model()
-    print(tn_train.predict_sentence("你长得很高啊！"))
-    print(tn_train.predict_sentence("路还很长"))
-    print(tn_train.predict_sentence("刘翔是一个长跑运动员"))
-    print(tn_train.predict_sentence("金正恩将长时间担任朝鲜领导人"))
-    print(tn_train.predict_sentence("为什么说“少壮不努力长大学会计”？"))
-    print(tn_train.predict_sentence("长"))
+            tn_train.prepare_model()
+            print(tn_train.predict_sentence("有什么以中国人为主角的电影？"))
+            print(tn_train.predict_sentence("现在有多少人，为了孩子倾家荡产"))
+            print(tn_train.predict_sentence("勿以善小而不为，勿以恶小而为之"))
+            print(tn_train.predict_sentence("知其不可为而为之"))
+            print(tn_train.predict_sentence("心理学家研究行为科学"))
+            print(tn_train.predict_sentence("大象鼻子为什么那么长"))
+            print(tn_train.predict_sentence("党员应该为人民服务"))
+            print(tn_train.predict_sentence("男人应该为女人服务"))
+            print(tn_train.predict_sentence("男人应该为女人服务"))
+            print(tn_train.predict_sentence("这到底是为什么"))
+
+    # print(tn_train.predict_sentence("你长得很高啊！"))
+    # print(tn_train.predict_sentence("路还很长"))
+    # print(tn_train.predict_sentence("刘翔是一个长跑运动员"))
+    # print(tn_train.predict_sentence("金正恩将长时间担任朝鲜领导人"))
+    # print(tn_train.predict_sentence("为什么说“少壮不努力长大学会计”？"))
+    # print(tn_train.predict_sentence("长"))
 
 
 
