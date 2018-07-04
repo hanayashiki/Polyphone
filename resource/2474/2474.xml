@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader type="ISBD-ER">
+    <fileDesc>
+   <titleStmt>
+    <title type="main">The Lancaster Corpus of Mandarin Chinese</title>
+        <editor>McEnery, A.M.</editor>
+        <editor>Xiao, Richard</editor>
+        <respStmt>
+          <resp>Major text provider</resp>
+          <name>SSReader Digital Library, China</name>
+        </respStmt>
+        <respStmt>
+          <resp>Proof-reading computerised text</resp>
+          <name>Huang, Xin</name>
+        </respStmt>
+        <funder>UK Economic and Social Research Council (ESRC)</funder>
+      </titleStmt>
+      <extent>
+        <seg type="designation">Text data</seg>
+        <seg type="size">30 files : ca. 42.8 MB</seg>
+      </extent>
+      <publicationStmt>
+        <authority>[Depositor details removed]<date>2004-04-27</date></authority>
+        <distributor>
+          <orgName type="OTA">University of Oxford Text Archive</orgName>
+          <placeName>Oxford</placeName>
+          <address>
+            <orgName type="OTA">University of Oxford Text Archive</orgName>
+            <orgName type="UOXF">Bodleian Libraries, University of Oxford</orgName>
+            <addrLine>Broad Street</addrLine>
+            <addrLine>Oxford</addrLine>
+            <addrLine>OX1 3BG</addrLine>
+          </address>
+          <email>ota@bodleian.ox.ac.uk</email>
+        </distributor>
+        <idno type="OTA">2474</idno>
+        <idno type="ota">2474</idno>
+	<idno type="PURL">http://purl.ox.ac.uk/ota/2474</idno>
+        <!--New OTA availability statement-->
+        <availability n="OTA-new" status="free" rend="visible">
+          <licence target="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+	  Distributed by the University of Oxford under a Creative Commons
+	  Attribution-NonCommercial-ShareAlike 3.0 Unported License.</licence>
+        </availability>
+        <!--Old Availability-->
+        <date>2004-04</date>
+      </publicationStmt>
+      <notesStmt>
+        
+        <note type="summary">The Lancaster Corpus of Mandarin Chinese (LCMC) is designed as a Chinese match for the FLOB and FROWN corpora for modern British and American English. The corpus is suitable for use in both monolingual research into modern Mandarin Chinese and cross-linguistic contrast of Chinese and British/American English. The corpus sampled 15 written text categories including news, literary texts, academic prose and official documents etc published in P.R.China in the early 1990s. The same sampling frame and period as FLOB/FROWN were used in LCMC. The corpus is encoded in Unicode (UTF-8) and marked up in XML.</note>
+        <note type="nb">www.ling.lancs.ac.uk/corplang/lcmc</note>
+      </notesStmt>
+      <sourceDesc>
+        <p>no source record</p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>Temporal information is encoded in human languages by two related yet distinct linguitic categories: tense and aspect. While tense and aspect are both temporal notions, they are different in nature. Tense is related to the temporal location whereas aspect is concerned with the temporal shape of a situation. English grammatically marks both tense and aspect while Chinese is a tenseless language that only marks aspect. This research project uses an English and a Chinese corpus to investigate how temporal and aspect meanings are expressed in the two typologically different languages..</p>
+      </projectDesc>
+      <samplingDecl>
+        <p/>
+      </samplingDecl>
+      <editorialDecl>
+        <p>Encoding format: XML</p>
+      </editorialDecl>
+      <refsDecl>
+        <p/>
+      </refsDecl>
+      <classDecl>
+        <taxonomy xml:id="OTASH">
+          <bibl>University of Oxford Text Archive Subject Headings</bibl>
+        </taxonomy>
+        <taxonomy xml:id="LCSH">
+          <bibl>Library of Congress Subject Headings</bibl>
+        </taxonomy>
+      </classDecl>
+    </encodingDesc>
+    <profileDesc>
+      <creation>
+        <date>2004</date>
+      </creation>
+      <langUsage>
+        <language ident="cmn">Chinese</language>
+      </langUsage>
+      <textClass>
+        <keywords scheme="#OTASH">
+          <term type="genre">Linguistic corpora</term>
+        </keywords>
+        <keywords scheme="#OTASH">
+          <term type="resource_type">Corpus</term>
+        </keywords>
+        <keywords scheme="#LCSH">
+          <term type="genre">Componential analysis (Linguistics)</term>
+        </keywords>
+        <keywords scheme="#LCSH">
+          <term type="genre">Linguistic analysis (Linguistics)</term>
+        </keywords>
+        <keywords scheme="#LCSH">
+          <term type="genre">Chinese language--Modern Chinese, 1919-</term>
+        </keywords>
+      </textClass>
+      <textClass>
+        <keywords scheme="http://www.ota.ox.ac.uk/processing">
+          <term type="class">corpus</term>
+          <term type="license">Free for non-commercial use</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <change><date>2004-02-28</date><label>cataloguer</label><name>Simpson, Greg</name>Final TEIXML header composed
+      </change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="OTA-filemap" rend="visible" n="unrestricted">
+        <ab type="dir">
+          <seg type="part">1</seg>
+          <ptr type="resourcePart" target="Lcmc"/>
+        </ab>
+      </div>
+    </body>
+  </text>
+</TEI>
