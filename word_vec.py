@@ -4,8 +4,8 @@ import numpy as np
 def get_char_word_vec():
     df = pd.read_csv(r'./resource/char.only.sgns.zhihu.char.csv', skiprows=1, encoding='utf-8',
                      names=[str(x) for x in range(300)])
-    print(df.head())
-    print(df.shape)
+    #print(df.head())
+    #print(df.shape)
     return df
 
 def get_sim(a, b):
