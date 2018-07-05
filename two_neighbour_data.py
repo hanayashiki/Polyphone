@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import random
 
 def sentence_to_two_neighbors(char: str, sentence: str, char_word_vec: pd.DataFrame):
     return sentence_to_n_neighbors(1, char, sentence, char_word_vec)
@@ -32,7 +33,8 @@ def sentence_cleaner(sentence: str):
         "8": "八",
         "9": "九",
         "「": "“",
-        "」": "”"
+        "」": "”",
+        "＂": "“"
     }
     for c in to_delete:
         sentence = sentence.replace(c, "")
@@ -55,6 +57,7 @@ def get_training_data(dictionary: dict, char: str, pinyins: list, char_word_vec:
 
     index = 0
     for y_index, pinyin in enumerate(pinyins):
+        random.shuffle(dictionary[pinyin])
         for sentence in dictionary[pinyin]:
             sentence = sentence_cleaner(sentence)
             try:
