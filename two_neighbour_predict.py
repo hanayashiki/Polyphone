@@ -52,6 +52,9 @@ class TwoNeighbourPredictGroup:
     def predict(self, char: str, sentence: str):
         return self.model_group[char]['model'].predict_sentence(sentence)
 
+    def get_model(self, char: str):
+        return self.model_group[char]['model']
+
 
 if __name__ == '__main__':
     group = TwoNeighbourPredictGroup()
