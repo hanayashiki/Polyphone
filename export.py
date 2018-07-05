@@ -5,6 +5,7 @@ import tensorflow as tf
 
 def export_model(model_group: TwoNeighbourPredictGroup, char: str):
     model = model_group.get_model(char).weighted_model
+    print(model.summary())
     signature = tf.saved_model.signature_def_utils.predict_signature_def(
         inputs={'image': model.input}, outputs={'scores': model.output})
 

@@ -105,7 +105,7 @@ class TwoNeighbourTrain:
     def prepare_model(self):
         model = self.two_neighbour.get_model()
         model.compile('sgd', loss='categorical_crossentropy', metrics=['accuracy'])
-        print(model.summary())
+        #print(model.summary())
         try:
             model.load_weights(self.model_weight)
         except:
