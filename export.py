@@ -9,6 +9,7 @@ def export_all_models_cmd_line():
     two_neighbour_group = TwoNeighbourPredictGroup()
     for key, model_dict in two_neighbour_group.model_group.items():
         model_weight = model_dict['model'].model_weight
+        print(model_dict['model'].weighted_model.summary())
         simple_model_name = f"{model_dict['alias']}-{str(2*model_dict['n'])}-{str(model_dict['use_focus']).lower()}.pb"
         export_model_base_dir = "./export_models/"
         commands += \

@@ -108,6 +108,7 @@ class TwoNeighbourTrain:
         #print(model.summary())
         try:
             model.load_weights(self.model_weight)
+            model.save(self.model_weight)
         except:
             print("old weights %s not found. train from zero." % self.model_weight)
         self.weighted_model = model
