@@ -13,14 +13,14 @@ class TwoNeighbour:
     def get_model(self):
 
         if self.use_focus:
-            inputs = Input(shape=(300 * 2 * self.n, ))
+            inputs = Input(shape=(300 * 2 * self.n, ), name="input")
             attention = Dense(2 * self.n, activation="sigmoid")(inputs)
             attention = RepeatVector(300)(attention)
             attention = Reshape(target_shape=(2 * self.n, 300))(attention)
             inputs_reshaped = Reshape(target_shape=(2 * self.n, 300))(inputs)
             attentioned = multiply([attention, inputs_reshaped])
             attentioned_reshaped = Reshape(target_shape=(300 * 2 * self.n,))(attentioned)
-            output = Dense(units=self.output_d, activation="softmax")(attentioned_reshaped)
+            output = Dense(units=self.output_d, activation="softmax", name="output")(attentioned_reshaped)
 
             return Model(inputs=inputs, outputs=output)
 

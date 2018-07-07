@@ -3,22 +3,19 @@ from two_neighbour_predict import TwoNeighbourPredictGroup
 from keras import backend as K
 import tensorflow as tf
 
-def export_model(model_group: TwoNeighbourPredictGroup, char: str):
-    model = model_group.get_model(char).weighted_model
-    print(model.summary())
-    signature = tf.saved_model.signature_def_utils.predict_signature_def(
-        inputs={'image': model.input}, outputs={'scores': model.output})
+def export_all_models_cmd_line():
+    commands = ""
 
-    builder = tf.saved_model.builder.SavedModelBuilder('./saved_models/%s/' % char)
-    builder.add_meta_graph_and_variables(
-        sess=K.get_session(),
-        tags=[tf.saved_model.tag_constants.SERVING],
-        signature_def_map={
-            tf.saved_model.signature_constants.DEFAULT_SERVING_SIGNATURE_DEF_KEY:
-                signature
-        })
-    builder.save()
+    two_neighbour_group = TwoNeighbourPredictGroup()
+    for key, model_dict in two_neighbour_group.model_group.items():
+        model_weight = model_dict['model'].model_weight
+        simple_model_name = f"{model_dict['alias']}-{str(2*model_dict['n'])}-{str(model_dict['use_focus']).lower()}.pb"
+        export_model_base_dir = "./export_models/"
+        commands += \
+            "python ./keras_to_tensorflow/keras_to_tensorflow.py -input_model_file %s -output_model_file %s\n" \
+            % (model_weight, export_model_base_dir + simple_model_name)
+
+    return commands
 
 if __name__ == '__main__':
-    model_group = TwoNeighbourPredictGroup()
-    export_model(model_group, '长')
+    print(export_all_models_cmd_line())

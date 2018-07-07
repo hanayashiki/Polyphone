@@ -6,6 +6,7 @@ class TwoNeighbourPredictGroup:
     model_group = {
         '长': {
             'model': None,
+            'alias': 'chang-long',
             'pinyins': ['chang2', 'zhang3'],
             'name': 'train_long_use_4_neighbour_focus',
             'n': 2,
@@ -13,13 +14,15 @@ class TwoNeighbourPredictGroup:
         },
         '冲': {
             'model': None,
-            'pinyins': ['chong2', 'chong4'],
+            'alias': 'chong-rush',
+            'pinyins': ['chong1', 'chong4'],
             'name': 'train_for_chong_4_neighbour-use_focus=True',
             'n': 2,
             'use_focus': True
         },
         '为': {
             'model': None,
+            'alias': 'wei-do',
             'pinyins': ['wei2', 'wei4'],
             'name': 'train_for_wei_8_neighbour-use_focus=True',
             'n': 4,
@@ -27,6 +30,7 @@ class TwoNeighbourPredictGroup:
         },
         '假': {
             'model': None,
+            'alias': 'jia-fake',
             'pinyins': ['jia3', 'jia4'],
             'name': 'train_for_jia_8_neighbour-use_focus=True',
             'n': 4,
@@ -34,6 +38,7 @@ class TwoNeighbourPredictGroup:
         },
         '好': {
             'model': None,
+            'alias': 'hao-good',
             'pinyins': ['hao3', 'hao4'],
             'name': 'train_for_hao_10_neighbour-use_focus=False',
             'n': 5,
@@ -100,4 +105,6 @@ if __name__ == '__main__':
     print(group.predict('好', '有些网民好赌'))
     print(group.predict('好', '好吃懒做没好果子吃'))
     print(group.predict('好', '好的政策必然容易推行'))
+    print("")
+    print(group.predict('长', '金正恩将长时间担任朝鲜领导人'))
 
