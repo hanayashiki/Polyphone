@@ -124,11 +124,11 @@ class TwoNeighbourTrain:
 
 
 if __name__ == '__main__':
-    from resource.training_好 import data
+    from resource.training_数 import data
 
     for use_focus in [False, True]:
         for i in range(1, 7):
-            tn_train = TwoNeighbourTrain('train_for_hao_%d_neighbour-use_focus=%s' %  (2*i, str(use_focus)), '好', ['hao3', 'hao4'], i, use_focus=use_focus)
+            tn_train = TwoNeighbourTrain('train_for_shu_%d_neighbour-use_focus=%s' %  (2*i, str(use_focus)), '数', ['shu3', 'shu4'], i, use_focus=use_focus)
             tn_train.load_data(data)
             tn_train.train()
 

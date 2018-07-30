@@ -27,11 +27,12 @@ for index, row in enumerate(char_sentences):
     while True:
         try:
             pinyin_index = int(input())
+            if pinyin_index == 'x':
+                break
+            pinyin = pinyins[pinyin_index - 1]
+            print("got %s for %s" % (pinyin, row))
+            data[pinyin].append(row)
+            print(data)
             break
         except:
             print("try again")
-    pinyin = pinyins[pinyin_index - 1]
-
-    print("got %s for %s" % (pinyin, row))
-    data[pinyin].append(row)
-    print(data)

@@ -43,6 +43,22 @@ class TwoNeighbourPredictGroup:
             'name': 'train_for_hao_10_neighbour-use_focus=False',
             'n': 5,
             'use_focus': False
+        },
+        '只': {
+            'model': None,
+            'alias': 'zhi-only',
+            'pinyins': ['zhi1', 'zhi3'],
+            'name': 'train_for_zhi_8_neighbour-use_focus=True',
+            'n': 4,
+            'use_focus': True
+        },
+        '数': {
+            'model': None,
+            'alias': 'shu-number',
+            'pinyins': ['shu3', 'shu4'],
+            'name': 'train_for_shu_10_neighbour-use_focus=True',
+            'n': 5,
+            'use_focus': True
         }
     }
 
@@ -107,4 +123,35 @@ if __name__ == '__main__':
     print(group.predict('好', '好的政策必然容易推行'))
     print("")
     print(group.predict('长', '金正恩将长时间担任朝鲜领导人'))
+    print("")
+    print(group.predict('只', '你长得真像一只长颈鹿'))
+    print(group.predict('只', '一只鸡一只鸭'))
+    print(group.predict('只', '我是一只蓝胖子'))
+    print(group.predict('只', '在下可爱学妹一只'))
+    print(group.predict('只', '只要功夫深铁杵磨成针'))
+    print(group.predict('只', '一只熊熊'))
+    print(group.predict('只', '一只小鬼出现了'))
+    print(group.predict('只', '午饭吃了两只鸡'))
+    print(group.predict('只', '只你一人，肯定不行'))
+    print("")
+    print(group.predict('数', '你来数一数啊'))
+    print(group.predict('数', '小心别数错了'))
+    print(group.predict('数', '数不完别数了'))
+    print(group.predict('数', '数字是很重要的'))
+    print(group.predict('数', '数数会不会'))
+    print(group.predict('数', '让计算机来数不是快多了'))
+    print(group.predict('数', '实数可以分成有理数和无理数'))
+    print(group.predict('数', '偶像这个时候应该在床上数洋娃娃'))
+    print(group.predict('数', '你数了几个了'))
+    print(group.predict('数', '我来数钱'))
+
+    while True:
+        try:
+            sentence = input()
+            splitted = sentence.split('|')
+            char = splitted[0].strip()
+            sentence = splitted[1].strip()
+            print(group.predict(char, sentence))
+        except:
+            print('[hanzi]|[sentence]')
 

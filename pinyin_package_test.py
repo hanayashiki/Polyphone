@@ -11,7 +11,14 @@ test_cases =[
     ("椅子很长", "yi3 zi5 hen3 chang2"),
     ("长宽高", "chang2 kuan1 gao1"),
     ("到中国银行买白银行不行", "dao4 zhong1 guo2 yin2 hang2 mai3 bai2 yin2 xing2 bu4 xing2"),
-    ("乒乓球拍卖完了", "ping1 pang1 qiu2 pai1 mai4 wan2 le5")
+    ("乒乓球拍卖完了", "ping1 pang1 qiu2 pai1 mai4 wan2 le5"),
+    ("小明有一只羊", ""),
+    ("熊一只是个孩子", ""),
+    ("只要够牛逼", ""),
+    ("只是不明白", ""),
+    ("我要一只鸡", ""),
+    ("只你一个不懂", ""),
+    ("一只只松鼠", "")
 ]
 
 import Levenshtein
@@ -24,10 +31,14 @@ for c, pinyin in test_cases:
     print("\n\ncase: " + c)
     for package in package_list:
         print(package.__name__)
-        expected = package.get_pinyin_seq(c).replace(' ', '')
-        actual = pinyin.replace(' ', '')
-        judge = expected == actual
-        print(str(judge) + "\tactual   (%s)" % package.get_pinyin_seq(c) + " vs \n\t\texpected (%s)\t\t\t" % pinyin)
-        print("\tedit distance: %d" % Levenshtein.distance(expected, actual))
+
+        expected = pinyin.replace(' ', '')
+        actual = package.get_pinyin_seq(c).replace(' ', '')
+        if len(expected) > 0:
+            judge = expected == actual
+            print(str(judge) + "\tactual   (%s)" % package.get_pinyin_seq(c) + " vs \n\t\texpected (%s)\t\t\t" % pinyin)
+            print("\tedit distance: %d" % Levenshtein.distance(expected, actual))
+        else:
+            print("not judged" + "\tactual   (%s)" % package.get_pinyin_seq(c) + " vs \n\t\texpected (%s)\t\t\t" % pinyin)
 
 
